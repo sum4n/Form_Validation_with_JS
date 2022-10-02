@@ -29,6 +29,11 @@ form {
     padding-bottom: 1rem;
 }
 
+input {
+    appearance: none;
+    border: 1px solid;
+}
+
 button {
     font-weight: 500;
 
