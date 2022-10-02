@@ -10,8 +10,27 @@
 <body>
     <div class="container">
         <p class="form-title">Form Validation with JavaScript</p>
-        <form novalidate>
         
+        <form novalidate>
+            <label for="mail">Email: </label>
+            <input type="mail" id="mail" name="mail">
+            <p class="mail-error"></p>
+
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country">
+            <p class="country-error"></p>
+
+            <label for="zip">ZipCode:</label>
+            <input type="text" id="zip" name="zip">
+            <p class="zip-error"></p>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <p class="password-error"></p>
+
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password">
+            <p class="confirmPassword-error"></p>
         </form>
     </div>
 </body>
