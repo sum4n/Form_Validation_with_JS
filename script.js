@@ -13,53 +13,23 @@ const confirmPasswordError = document.querySelector(".confirmPassword-error");
 
 const submitButton = document.querySelector("button");
 
-
-mail.addEventListener("input", () => {
-    if (mail.validity.valid) {
-        mailError.textContent = "";
+form.addEventListener("input", (event) => {
+    if (event.target.validity.valid) {
+        // gets the error <p> and add remove error message.
+        event.target.nextElementSibling.textContent = "";
     } else {
-        showError("mail");
+        showError(event.target.id);
+        console.log(event.target)
     }
 });
 
-country.addEventListener("input", () => {
-    if (country.validity.valid) {
-        countryError.textContent = "";
-    } else {
-        showError("country");
-    }
-});
-
-zip.addEventListener("input", () => {
-    if (zip.validity.valid) {
-        zipError.textContent = "";
-    } else {
-        showError("zip");
-    }
-});
-
-password.addEventListener("input", () => {
-    if (password.validity.valid) {
-        passwordError.textContent = "";
-    } else {
-        showError("password");
-    }
-});
-
-confirmPassword.addEventListener("input", () => {
-    if (confirmPassword.validity.valid) {
-        confirmPasswordError.textContent = "";
-    } else {
-        showError("confirmPassword");
-    }
-});
 
 form.addEventListener("submit", (event) => {
     if (!mail.validity.valid) {
         showError("mail");
         event.preventDefault();
     } 
-    
+
     if (!country.validity.valid) {
         showError("country");
         event.preventDefault();
@@ -80,6 +50,8 @@ form.addEventListener("submit", (event) => {
         event.preventDefault();
     }
 });
+
+
 
 function showError(target) {
     if (target === "mail") {
