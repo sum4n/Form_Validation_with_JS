@@ -91,6 +91,8 @@ function showError(target) {
    if (target === "password") {
         if (password.validity.valueMissing) {
             passwordError.textContent = "You need to enter a password.";
+        } else if (password.validity.tooShort) {
+            passwordError.textContent = "Password must contain 8 characters.";
         }
    }
     
