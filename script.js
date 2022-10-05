@@ -14,14 +14,25 @@ const confirmPasswordError = document.querySelector(".confirmPassword-error");
 const submitButton = document.querySelector("button");
 
 form.addEventListener("input", (event) => {
-    if (event.target.validity.valid) {
-        // gets the error <p> and add remove error message.
-        event.target.nextElementSibling.textContent = "";
-    } else {
-        showError(event.target.id);
-        // console.log(event.target)
+    // Exclude confirm-password input eventlistener.
+    if (event.target.id !== "confirm-password") {
+        if (event.target.validity.valid) {
+            // gets the error <p> and add remove error message.
+            event.target.nextElementSibling.textContent = "";
+        } else {
+            showError(event.target.id);
+            // console.log(event.target)
+        }
     }
 });
+
+confirmPassword.addEventListener("input", () => {
+    if (confirmPassword.value === password.value) {
+        confirmPasswordError.textContent = "";
+    } else {
+        showError("confirm-password");
+    }
+})
 
 
 form.addEventListener("submit", (event) => {
@@ -45,7 +56,7 @@ form.addEventListener("submit", (event) => {
         event.preventDefault();
     }
 
-    if (!confirmPassword.validity.valid) {
+    if (confirmPassword.value !== password.value) {
         showError("confirmPassword");
         event.preventDefault();
     }
@@ -96,9 +107,11 @@ function showError(target) {
         }
    }
     
-   if (target === "confirmPassword") {
+   if (target === "confirm-password") {
          if (confirmPassword.validity.valueMissing) {
-            confirmPasswordError.textContent = "Passwords did not match.";
+            confirmPasswordError.textContent = "Enter a password.";
+        } else if (confirmPassword.value !== password.value) {
+            confirmPasswordError.textContent = "Passwords do not match.";
         }
    }
 }
