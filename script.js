@@ -83,6 +83,12 @@ function showError() {
     }
     if (country.validity.valueMissing) {
         countryError.textContent = "You need to enter a country name.";
+    }  else if (country.validity.patternMismatch) {
+        countryError.textContent = "Only letters A-Z are allowed.";
+    }  else if (country.validity.tooShort) {
+        countryError.textContent = "Please use atleast 3 characters.";
+    } else if (country.validity.tooLong) {
+        countryError.textContent = "Only 20 characters are allowed";
     }
     if (zip.validity.valueMissing) {
         zipError.textContent = "You need to enter a zip code.";

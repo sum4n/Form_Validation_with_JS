@@ -18,11 +18,12 @@
             <p class="mail-error"></p>
 
             <label for="country">Country:</label>
-            <input type="text" id="country" name="country" required>
+            <input type="text" id="country" name="country" pattern="\b[^\d\W]+\b"
+            minlength="3" maxlength="20" required>
             <p class="country-error"></p>
 
             <label for="zip">ZipCode:</label>
-            <input type="text" id="zip" name="zip" required>
+            <input type="text" id="zip" name="zip" minlength="3" maxlength="20" required>
             <p class="zip-error"></p>
 
             <label for="password">Password:</label>
