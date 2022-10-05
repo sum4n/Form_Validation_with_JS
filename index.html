@@ -23,7 +23,8 @@
             <p class="country-error"></p>
 
             <label for="zip">ZipCode:</label>
-            <input type="text" id="zip" name="zip" minlength="3" maxlength="20" required>
+            <input type="text" id="zip" name="zip" minlength="6" maxlength="6" 
+            pattern="\b[^\D\W]+\b" required>
             <p class="zip-error"></p>
 
             <label for="password">Password:</label>

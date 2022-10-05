@@ -19,7 +19,7 @@ form.addEventListener("input", (event) => {
         event.target.nextElementSibling.textContent = "";
     } else {
         showError(event.target.id);
-        console.log(event.target)
+        // console.log(event.target)
     }
 });
 
@@ -79,6 +79,12 @@ function showError(target) {
     if (target === "zip") {
         if (zip.validity.valueMissing) {
             zipError.textContent = "You need to enter a zip code.";
+        } else if (zip.validity.patternMismatch) {
+            zipError.textContent = "Only 0-9 digits are allowed.";
+        } else if (zip.validity.tooShort) {
+            zipError.textContent = "Please input atleast 6 digits.";
+        } else if (zip.validity.tooLong) {
+            zipError.textContent = "Only 6 digits are allowed.";
         }
     }
 
