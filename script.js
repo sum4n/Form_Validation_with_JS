@@ -77,7 +77,9 @@ function showError() {
     if (mail.validity.valueMissing) {
         mailError.textContent = "You need to enter an email address.";
     } else if (mail.validity.typeMismatch) {
-        mailError.textContent = "Entered value needs to be an email address.";
+        mailError.textContent = "It needs to be an email address.";
+    } else if (mail.validity.tooShort) {
+        mailError.textContent = "Please use at least 8 characters.";
     }
     if (country.validity.valueMissing) {
         countryError.textContent = "You need to enter a country name.";
