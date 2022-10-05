@@ -18,7 +18,7 @@ mail.addEventListener("input", () => {
     if (mail.validity.valid) {
         mailError.textContent = "";
     } else {
-        showError();
+        showError("mail");
     }
 });
 
@@ -26,7 +26,7 @@ country.addEventListener("input", () => {
     if (country.validity.valid) {
         countryError.textContent = "";
     } else {
-        showError();
+        showError("country");
     }
 });
 
@@ -34,7 +34,7 @@ zip.addEventListener("input", () => {
     if (zip.validity.valid) {
         zipError.textContent = "";
     } else {
-        showError();
+        showError("zip");
     }
 });
 
@@ -42,7 +42,7 @@ password.addEventListener("input", () => {
     if (password.validity.valid) {
         passwordError.textContent = "";
     } else {
-        showError();
+        showError("password");
     }
 });
 
@@ -50,54 +50,75 @@ confirmPassword.addEventListener("input", () => {
     if (confirmPassword.validity.valid) {
         confirmPasswordError.textContent = "";
     } else {
-        showError();
+        showError("confirmPassword");
     }
 });
 
 form.addEventListener("submit", (event) => {
     if (!mail.validity.valid) {
-        showError();
+        showError("mail");
         event.preventDefault();
-    } else if (!country.validity.valid) {
-        showError();
+    } 
+    
+    if (!country.validity.valid) {
+        showError("country");
         event.preventDefault();
-    } else if (!zip.validity.valid) {
-        showError();
+    }
+
+    if (!zip.validity.valid) {
+        showError("zip");
         event.preventDefault();
-    } else if (!password.validity.valid) {
-        showError();
+    }
+
+    if (!password.validity.valid) {
+        showError("password");
         event.preventDefault();
-    } else if (!confirmPassword.validity.valid) {
-        showError();
+    }
+
+    if (!confirmPassword.validity.valid) {
+        showError("confirmPassword");
         event.preventDefault();
     }
 });
 
-function showError() {
-    if (mail.validity.valueMissing) {
-        mailError.textContent = "You need to enter an email address.";
-    } else if (mail.validity.typeMismatch) {
-        mailError.textContent = "It needs to be an email address.";
-    } else if (mail.validity.tooShort) {
-        mailError.textContent = "Please use at least 8 characters.";
+function showError(target) {
+    if (target === "mail") {
+        if (mail.validity.valueMissing) {
+            mailError.textContent = "You need to enter an email address.";
+        } else if (mail.validity.typeMismatch) {
+            mailError.textContent = "It needs to be an email address.";
+        } else if (mail.validity.tooShort) {
+            mailError.textContent = "Please use at least 8 characters.";
+        }
     }
-    if (country.validity.valueMissing) {
-        countryError.textContent = "You need to enter a country name.";
-    }  else if (country.validity.patternMismatch) {
-        countryError.textContent = "Only letters A-Z are allowed.";
-    }  else if (country.validity.tooShort) {
-        countryError.textContent = "Please use atleast 3 characters.";
-    } else if (country.validity.tooLong) {
-        countryError.textContent = "Only 20 characters are allowed";
+
+    if (target === "country") {
+        if (country.validity.valueMissing) {
+            countryError.textContent = "You need to enter a country name.";
+        }  else if (country.validity.patternMismatch) {
+            countryError.textContent = "Only letters A-Z are allowed.";
+        }  else if (country.validity.tooShort) {
+            countryError.textContent = "Please use atleast 3 characters.";
+        } else if (country.validity.tooLong) {
+            countryError.textContent = "Only 20 characters are allowed";
+        }
     }
-    if (zip.validity.valueMissing) {
-        zipError.textContent = "You need to enter a zip code.";
+
+    if (target === "zip") {
+        if (zip.validity.valueMissing) {
+            zipError.textContent = "You need to enter a zip code.";
+        }
     }
-    if (password.validity.valueMissing) {
-        passwordError.textContent = "You need to enter a password.";
-    }
+
+   if (target === "password") {
+        if (password.validity.valueMissing) {
+            passwordError.textContent = "You need to enter a password.";
+        }
+   }
     
-    if (confirmPassword.validity.valueMissing) {
-        confirmPasswordError.textContent = "You need to enter a matching password.";
-    }
+   if (target === "confirmPassword") {
+         if (confirmPassword.validity.valueMissing) {
+            confirmPasswordError.textContent = "Passwords did not match.";
+        }
+   }
 }
