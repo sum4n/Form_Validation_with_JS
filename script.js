@@ -56,10 +56,15 @@ form.addEventListener("submit", (event) => {
         event.preventDefault();
     }
 
-    if (confirmPassword.value !== password.value) {
-        showError("confirmPassword");
+    if (confirmPassword.value !== password.value || !confirmPassword.value) {
+        showError("confirm-password");
         event.preventDefault();
     }
+
+   if (mail.validity.valid && country.validity.valid && zip.validity.valid &&
+        password.validity.valid && confirmPassword.value === password.value) {
+            alert("High Five");
+        }
 });
 
 

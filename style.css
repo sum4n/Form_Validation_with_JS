@@ -4,6 +4,9 @@ body {
     justify-content: center;
     
     font-family: 'Times New Roman', Times, serif;
+
+    margin: 0;
+    padding: 0;
 }
 
 .form-title{
@@ -27,14 +30,30 @@ form {
     display: flex;
     flex-direction: column;
     padding-bottom: 1rem;
+    /* gap: 8px; */
+}
+
+.error {
+    color: red;
+    margin-top: 0;
+    font-size: .8rem;
 }
 
 input {
     appearance: none;
-    border: 1px solid;
+    /* border: 1px solid; */
+    outline: none;
 }
 
 button {
     font-weight: 500;
-
 }
+
+input:valid {
+    border: 1px solid rgb(2, 114, 2);
+}
+
+input:invalid {
+    border: 1px solid rgb(255, 0, 0);
+}
+
